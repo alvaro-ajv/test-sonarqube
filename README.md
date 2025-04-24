@@ -1,5 +1,9 @@
 # TestSonarqube
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=alvaro-ajv_test-sonarqube&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=alvaro-ajv_test-sonarqube)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=alvaro-ajv_test-sonarqube&metric=coverage)](https://sonarcloud.io/summary/new_code?id=alvaro-ajv_test-sonarqube)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
 
 ## Development server
