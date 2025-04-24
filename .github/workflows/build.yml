@@ -1,0 +1,38 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+env:
+    NODE_VERSION: "20.10.0"
+
+jobs:
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+    
+        - name: Use Node.js ${{ env.NODE_VERSION }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ env.NODE_VERSION }}
+        
+        - name: Install dependencies
+          run: |
+              npm install --force
+              npm install -g @angular/cli@16.2.16
+        
+        - name: Run Tests
+          run: |
+              npm run test:headless
+        
+        - name: SonarQube Scan
+          uses: SonarSource/sonarqube-scan-action@v5
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

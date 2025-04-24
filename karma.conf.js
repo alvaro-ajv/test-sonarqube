@@ -54,6 +54,12 @@ module.exports = function (config) {
     },
     reporters: ['progress', 'kjhtml', 'sonarqube'],
     browsers: ['Chrome'],
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    customLaunchers: {
+      ChromeHeadlessCustom: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
+      }
+    },
   });
 };
